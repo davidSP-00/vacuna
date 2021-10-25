@@ -1,0 +1,16 @@
+
+
+<ion-content class="ion-padding" >
+<h1>Bienvenido,</h1>
+<h3>Iniciar Sesion</h3>
+<ion-row  class="col-center">
+  <ion-col sizeLg="4" sizeMd="6" sizeXs="10" >
+    <form [formGroup]="loginForm" (submit)="onSubmit()">
+      <app-input label="Email ID" formControlName="email"></app-input>
+      <app-input label="Contraseña" type="password" formControlName="password"></app-input>
+      <a routerLink="#" class="forgot-password-link"></a>
+      <ion-button shape="round" expand="full" type="submit">Ingresar</ion-button>
+    </form>
+  </ion-col>
+</ion-row>
+</ion-content>
