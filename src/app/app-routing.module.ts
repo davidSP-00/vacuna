@@ -4,13 +4,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
-  {
+ /*  {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
+  }, */
   {
     path: 'login',
     loadChildren: () => import('./screens/login/login.module').then( m => m.LoginPageModule)
@@ -20,12 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./screens/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'paciente-form',
-    loadChildren: () => import('./screens/paciente-form/paciente-form.module').then( m => m.PacienteFormPageModule)
-  },
-  {
-    path: 'pacientes',
-    loadChildren: () => import('./screens/pacientes/pacientes.module').then( m => m.PacientesPageModule)
+    path: 'main',
+    loadChildren: () => import('./screens/main/main.module').then( m => m.MainPageModule)
   }
 ];
 

@@ -1,8 +1,21 @@
 <app-toolbar></app-toolbar>
-
 <ion-content class="screen-paciente">
-  <h6>Inicio > <b> Padres y/o Apoderados</b></h6>
-  <h1>Padres y/o Apoderados</h1>
+
+  <ion-row>
+    <ion-col size="6">
+      <h6>Inicio > <b> Padres y/o Apoderados</b></h6>
+      <h1>Padres y/o Apoderados</h1>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-fab class="agregar-persona" routerLink="/main/paciente-form">
+        <ion-fab-button>
+          <ion-icon name="person-add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-col>
+  </ion-row>
+  
   <ion-grid>
     <ion-row class="col-center">
       <ion-col  sizeXl="6" sizeLg="7" sizeMd="7" sizeSm="8" sizeXs="12">
@@ -23,31 +36,31 @@
 
           <ion-list>
             <ion-item lines="none">
-              <ion-label slot="start">Nro. de registro</ion-label>
+              <ion-label slot="start" class="b">Nro. de registro</ion-label>
               <ion-label slot="end">087999</ion-label>
             </ion-item>
             <ion-item lines="none">
-              <ion-label>DNI/CE</ion-label>
+              <ion-label class="b">DNI/CE</ion-label>
               <ion-label slot="end">46567890</ion-label>
             </ion-item>
             <ion-item lines="none">
-              <ion-label>Nombres</ion-label>
+              <ion-label class="b">Nombres</ion-label>
               <ion-label slot="end">Luizio Luis</ion-label>
             </ion-item>
             <ion-item lines="none">
-              <ion-label>Apellidos</ion-label>
+              <ion-label class="b">Apellidos</ion-label>
               <ion-label slot="end">Cabrera Herrera</ion-label>
             </ion-item>
             <ion-item lines="none">
-              <ion-label>Teléfono</ion-label>
+              <ion-label class="b">Teléfono</ion-label>
               <ion-label slot="end">987789654</ion-label>
             </ion-item>
             <ion-item lines="none">
-              <ion-label>Correo</ion-label>
+              <ion-label class="b">Correo</ion-label>
               <ion-label slot="end">santive@gmail.com</ion-label>
             </ion-item>
             <ion-item lines="none">
-              <ion-label>Nro. de hijos</ion-label>
+              <ion-label class="b">Nro. de hijos</ion-label>
               <ion-label slot="end">2</ion-label>
             </ion-item>
           </ion-list>
