@@ -1,0 +1,11 @@
+<div class="form-field">
+  <label [ngClass]="{'label-focused':focused,'label-invalid':invalid }"  >{{label}}</label>
+  <select (focus)="focused =true"
+  (change)="changeEvent($event)"
+  [ngClass]="{'input-invalid':invalid}"
+  (blur)="onTouched()">
+    <option disabled="disabled" selected></option>
+    <option *ngFor="let value of selectValues" value="{{value.id}}">{{value.descripcion}}</option>
+  
+  </select>
+</div>

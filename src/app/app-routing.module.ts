@@ -18,6 +18,14 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./screens/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'paciente-form',
+    loadChildren: () => import('./screens/paciente-form/paciente-form.module').then( m => m.PacienteFormPageModule)
+  },
+  {
+    path: 'pacientes',
+    loadChildren: () => import('./screens/pacientes/pacientes.module').then( m => m.PacientesPageModule)
   }
 ];
 

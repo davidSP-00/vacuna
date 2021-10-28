@@ -14,7 +14,7 @@
     .label-invalid{
         color:rgb(252, 97, 97);
     }
-    input{
+    select{
         position:absolute;
         top:0;
         left:0;
@@ -25,7 +25,7 @@
         border:1px solid #e7ebee;
         border-radius: 10px;
         outline: none;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         background:none;
         z-index: 1;
         color:#171c25;
