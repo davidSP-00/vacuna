@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from 'src/app/guards/auth.guard';
 
-import { LoginPage } from './login.page';
+import { EsquemaVacunaPage } from './esquema-vacuna.page';
 
 const routes: Routes = [
   {
     path: '',
-    canActivate:[AuthGuard],
-    component: LoginPage
+    component: EsquemaVacunaPage
   }
 ];
 
@@ -16,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class LoginPageRoutingModule {}
+export class EsquemaVacunaPageRoutingModule {}

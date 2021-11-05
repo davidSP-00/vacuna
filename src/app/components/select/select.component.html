@@ -5,7 +5,7 @@
   [ngClass]="{'input-invalid':invalid}"
   (blur)="onTouched()">
     <option disabled="disabled" selected></option>
-    <option *ngFor="let value of selectValues" value="{{value.id}}">{{value.descripcion}}</option>
+    <option *ngFor="let value of selectValues" value="{{value.valor}}">{{value.descripcion}}</option>
   
   </select>
 </div>

@@ -3,21 +3,12 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col sizeXl="2" sizeLg="2" sizeMd="3" sizeSm="4" sizeXs="6">
-        <ion-card routerLink="/main/pacientes">
+      <ion-col sizeXl="2" sizeLg="2" sizeMd="3" sizeSm="4" sizeXs="6" *ngFor="let item of items" >
+        <ion-card [routerLink]="item.routerLink">
           <ion-card-content>
-            <ion-icon name="person-outline" ></ion-icon>
-            <h2>Padres y/o Apoderados</h2>
-           <ion-text>Ver registrados y agregar nuevos</ion-text>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col sizeXl="2" sizeLg="2" sizeMd="3" sizeSm="4" sizeXs="6">
-        <ion-card routerLink="/main/agenda">
-          <ion-card-content>
-            <ion-icon name="calendar-outline"></ion-icon>
-           <h2>Agenda de vacunación</h2>
-           <ion-text>Ver registrados y agregar nuevos</ion-text>
+            <ion-icon [name]="item.icon" ></ion-icon>
+            <h2>{{item.titulo}}</h2>
+           <ion-text>{{item.descripcion}}</ion-text>
           </ion-card-content>
         </ion-card>
       </ion-col>
