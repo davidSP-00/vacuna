@@ -7,7 +7,7 @@ import { Hijo } from '../models/hijo';
   providedIn: 'root'
 })
 export class HijoService {
-  ruta: string = environment.ruta;
+  ruta: string = environment.ruta+'vacunas/';
   constructor(private http:HttpClient) { }
 
   getHijos(){

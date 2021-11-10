@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/usuario';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -11,7 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginPage implements OnInit {
   loginForm:FormGroup;
-  constructor(private navController:NavController,private loginService:LoginService) { }
+  constructor(private navController:NavController,private loginService:LoginService,private alertController:AlertController) { }
 
   ngOnInit() {
     this.loginForm=new FormGroup({
@@ -26,14 +26,49 @@ onSubmit(){
   if(this.loginForm.valid){
     let usuario=new Usuario();
     usuario.dni=this.loginForm.get('dni').value;
-    usuario.clave=this.loginForm.get('password').value;
-    this.loginService.login(usuario).subscribe(res=>{
-     
-      if(res.acceso){
-        //guardar res en localstorage
-        localStorage.setItem('usuario',JSON.stringify(res));
-        this.navController.navigateRoot('/main/menu');
+    usuario.password=this.loginForm.get('password').value;
+    this.loginService.login(usuario).subscribe(async res=>{
+      
+
+      localStorage.setItem('usuario',JSON.stringify(res));
+      let roles=res.authorities;
+      let buttons=[]
+      for(let i=0;i<roles.length;i++){
+      
+        let text='';
+        switch(roles[i].authority){
+          case 'ROLE_ADMIN':
+            text='Administrador'
+            break;
+            case 'ROLE_USER':
+              text='Apoderado'
+              break;
+              case 'ROLE_MEDICO':
+                text='Medico'
+        }
+        buttons.push({
+          text:text,
+          handler:()=>{
+            console.log('confirm '+roles[i].authority)
+            localStorage.setItem('rol',roles[i].authority);
+            this.navController.navigateRoot('/main/menu');
+          }
+        })
+
       }
+      const alert = await this.alertController.create({
+       
+      
+        header: 'Bienvenido',
+        message: 'Con que rol quiere logearse',
+        buttons: buttons
+      });
+  
+      await alert.present().then(
+        
+      );
+
+
     })
       
    

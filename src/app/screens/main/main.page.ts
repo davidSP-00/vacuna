@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/usuario';
+import { LocalService } from 'src/app/services/local.service';
 
 @Component({
   selector: 'app-main',
@@ -8,27 +9,26 @@ import { Usuario } from 'src/app/models/usuario';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
-  usuario:Usuario;
+  rol:string;
   public appPages = [
     { title: 'Inicio', url: '/main/menu', icon: 'home' ,tipo:'X'},
-    { title: 'Lista de Padres y/o Apoderados', url: '/main/pacientes', icon: 'people', tipo:'M' },
-    { title: 'Agenda', url: '/main/agenda', icon: 'calendar',tipo:'M' },
-    { title: 'Esquema Vacunación', url: '/main/esquema-vacuna', icon: 'calendar', tipo:'P'  },
-    { title: 'Informacion Vacunas', url: '/main/informacion-vacuna', icon: 'clipboard', tipo:'P'  },
+    { title: 'Lista de Padres y/o Apoderados', url: '/main/pacientes', icon: 'people', tipo:'ROLE_MEDICO' },
+    { title: 'Agenda', url: '/main/agenda', icon: 'calendar',tipo:'ROLE_MEDICO' },
+    { title: 'Esquema Vacunación', url: '/main/esquema-vacuna', icon: 'calendar', tipo:'ROLE_USER'  },
+    { title: 'Informacion Vacunas', url: '/main/informacion-vacuna', icon: 'clipboard', tipo:'ROLE_USER'  },
   ];
-  constructor(private navCtrl:NavController) { }
+  constructor(private navCtrl:NavController,private localService:LocalService) { }
 
   ngOnInit() {
-     this.usuario=JSON.parse(localStorage.getItem('usuario')) as Usuario;
-  console.log(this.usuario);
+     this.rol=this.localService.obtenerRol();
+     
   this.appPages=this.appPages.filter(item=>{
-    if(item.tipo==this.usuario.tipo || item.tipo=='X'){
+    if(item.tipo==this.rol || item.tipo=='X'){
       return item;
     }
   });
   }
 cerrarSesion(){
-  localStorage.removeItem('usuario');
-
+ this.localService.limpiarSesion();
 }
 }

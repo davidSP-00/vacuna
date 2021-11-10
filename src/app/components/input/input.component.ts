@@ -24,6 +24,9 @@ export class InputComponent implements ControlValueAccessor,OnInit {
     
    }
   ngOnInit(): void {
+    if(this.type=="date"){
+     this.focused=true
+    }
     this._control = this.injector.get(NgControl);
   }
   
@@ -53,5 +56,9 @@ export class InputComponent implements ControlValueAccessor,OnInit {
 get invalid(){
   return this._control.invalid &&this._control.touched;
 }
- 
+dateChange($event){
+  if(this.type=="date"){
+  this.onChangeFn($event.target.value);
+  }
+}
 }

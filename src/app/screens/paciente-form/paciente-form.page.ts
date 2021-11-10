@@ -6,6 +6,8 @@ import { ApoderadoService } from 'src/app/services/apoderado.service';
 import { HijoService } from 'src/app/services/hijo.service';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+import { Apoderado } from 'src/app/models/apoderado';
 @Component({
   selector: 'app-paciente-form',
   templateUrl: './paciente-form.page.html',
@@ -37,7 +39,7 @@ editable:boolean=true;
       sexo:new FormControl('',Validators.required),
       celular:new FormControl('',Validators.required),
       correo:new FormControl('',Validators.required),
-      edad:new FormControl('',Validators.required),
+      fechaNacimiento:new FormControl('',Validators.required),
       estadoCivil:new FormControl('',Validators.required),
       nivelEducacion:new FormControl('',Validators.required),
       tipoTrabajo:new FormControl('',Validators.required),
@@ -52,7 +54,7 @@ editable:boolean=true;
       dni:new  FormControl('',Validators.required),
       nombres:new FormControl('',Validators.required),
       apellidos:new FormControl('',Validators.required),
-      edad:new FormControl('',Validators.required),
+      fechaNacimiento:new FormControl('',Validators.required),
       sexo:new FormControl('',Validators.required),
       dniPadre:new FormControl('',Validators.required),
   
@@ -63,7 +65,9 @@ editable:boolean=true;
     this.firstForm.markAllAsTouched();
    
     if(this.firstForm.valid){
-      this.apoderadoService.saveApoderado(this.firstForm.value).subscribe(res=>{
+      let apoderado=this.firstForm.value as Apoderado;
+      apoderado.fechaNacimiento=moment(this.firstForm.value).unix().toString();
+      this.apoderadoService.saveApoderado(apoderado).subscribe(res=>{
         console.log(res);
         this.editable=false;
         this.myStepper.next();

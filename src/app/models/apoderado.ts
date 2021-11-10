@@ -5,7 +5,7 @@ export class Apoderado{
         celular: string;
         correo: string;
         dni: string;
-        edad: number;
+        fechaNacimiento:string;
         estadoCivil: string;
         nivelEducacion: string;
         nivelSocioEconomico: string;

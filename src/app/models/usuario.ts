@@ -1,6 +1,8 @@
 
 export class Usuario{
 dni:string;
-clave:string;
+password:string;
 tipo:string;
+nombresApellidos:string;
+authorities:any[];
 }

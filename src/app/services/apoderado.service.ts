@@ -7,7 +7,7 @@ import { Apoderado } from '../models/apoderado';
   providedIn: 'root'
 })
 export class ApoderadoService {
-  ruta: string = environment.ruta;
+  ruta: string = environment.ruta+'vacunas/';
 
   constructor(private http: HttpClient) { }
 

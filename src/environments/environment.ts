@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ruta: 'http://localhost:8080/vacunas/'
+  ruta: 'http://localhost:8080/'
 };
 
 /*
