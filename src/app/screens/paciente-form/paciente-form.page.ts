@@ -8,6 +8,7 @@ import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Apoderado } from 'src/app/models/apoderado';
+import { Hijo } from 'src/app/models/hijo';
 @Component({
   selector: 'app-paciente-form',
   templateUrl: './paciente-form.page.html',
@@ -45,7 +46,7 @@ editable:boolean=true;
       tipoTrabajo:new FormControl('',Validators.required),
       nivelSocioEconomico:new FormControl('',Validators.required),
       tipoPoblacion:new FormControl('',Validators.required),
-      numeroHijos:new FormControl('',Validators.required),
+     /*  numeroHijos:new FormControl('',Validators.required), */
       /* familiar:new FormControl('',Validators.required), */
       
 
@@ -63,10 +64,10 @@ editable:boolean=true;
   }
   firstFormSubmit(){
     this.firstForm.markAllAsTouched();
-   
+    
     if(this.firstForm.valid){
       let apoderado=this.firstForm.value as Apoderado;
-      apoderado.fechaNacimiento=moment(this.firstForm.value).unix().toString();
+      apoderado.fechaNacimiento=moment(this.firstForm.get('fechaNacimiento').value,'YYYY-MM-DD').unix().toString();
       this.apoderadoService.saveApoderado(apoderado).subscribe(res=>{
         console.log(res);
         this.editable=false;
@@ -82,7 +83,10 @@ editable:boolean=true;
     this.secondForm.markAllAsTouched();
     this.secondForm.get('dniPadre').setValue(this.firstForm.value.dni);
     if(this.secondForm.valid){
-      this.hijoService.saveHijo(this.secondForm.value).subscribe(res=>{
+      
+      let hijo=this.firstForm.value as Hijo;
+      hijo.fechaNacimiento=moment(this.secondForm.get('fechaNacimiento').value,'YYYY-MM-DD').unix().toString();
+      this.hijoService.saveHijo(hijo).subscribe(res=>{
         console.log(res);
         this.router.navigateByUrl('main/pacientes');
       },err=>{

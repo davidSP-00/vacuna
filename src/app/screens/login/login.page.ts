@@ -51,7 +51,7 @@ onSubmit(){
           handler:()=>{
             console.log('confirm '+roles[i].authority)
             localStorage.setItem('rol',roles[i].authority);
-            this.navController.navigateRoot('/main/menu');
+            this.navController.navigateForward('/main/menu');
           }
         })
 

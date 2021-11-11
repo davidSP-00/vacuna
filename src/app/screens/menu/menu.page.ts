@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { LocalService } from 'src/app/services/local.service';
 
@@ -54,6 +54,11 @@ rol:string;
         });
       
     
+    
+  }
+  
+  ionViewDidLeave(){
+    console.log('sd')
     
   }
 }
