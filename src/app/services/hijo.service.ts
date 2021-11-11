@@ -16,4 +16,9 @@ export class HijoService {
   saveHijo(hijo:Hijo){
     return this.http.post(this.ruta + 'hijo', hijo);
   }
+
+  getHijosDePadre(dniPadre:string){
+    return this.http.get(this.ruta + 'hijo/' + dniPadre);
+  }
+
 }

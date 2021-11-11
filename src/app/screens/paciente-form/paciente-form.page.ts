@@ -84,7 +84,7 @@ editable:boolean=true;
     this.secondForm.get('dniPadre').setValue(this.firstForm.value.dni);
     if(this.secondForm.valid){
       
-      let hijo=this.firstForm.value as Hijo;
+      let hijo=this.secondForm.value as Hijo;
       hijo.fechaNacimiento=moment(this.secondForm.get('fechaNacimiento').value,'YYYY-MM-DD').unix().toString();
       this.hijoService.saveHijo(hijo).subscribe(res=>{
         console.log(res);
