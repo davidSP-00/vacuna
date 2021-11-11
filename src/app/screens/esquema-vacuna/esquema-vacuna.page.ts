@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { EstadoVacunacion } from 'src/app/models/estadoVacunacion';
+import { GrupoVacunaDTO } from 'src/app/models/grupoVacunaDTO';
 import { Hijo } from 'src/app/models/hijo';
+import { VacunaDTO } from 'src/app/models/vacunaDTO';
 import { EstadoVacunacionService } from 'src/app/services/estado-vacunacion.service';
 import { HijoService } from 'src/app/services/hijo.service';
 import { LocalService } from 'src/app/services/local.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-esquema-vacuna',
@@ -32,7 +35,7 @@ export class EsquemaVacunaPage implements OnInit {
           handler:()=>{
             
       this.estadoVacunacionService.getEstadoVacunacion(data[i].dni).subscribe((data:EstadoVacunacion)=>{
-     console.log(data);
+    
       this.estadoVacunacion=data;
       });
           }
@@ -52,5 +55,13 @@ export class EsquemaVacunaPage implements OnInit {
     
   }
 
+validarCheck(grupoVacunaDTO :GrupoVacunaDTO){
 
+  return !grupoVacunaDTO.vacunaDTO.some(vacunaDTO=>vacunaDTO.aplicado==false);
+}
+obtenerMeses(){
+  if(this.estadoVacunacion){
+  return Math.floor(moment().diff(moment(parseInt(this.estadoVacunacion.fechaNacimiento,10)*1000), 'months', true) )
+  }
+}
 }

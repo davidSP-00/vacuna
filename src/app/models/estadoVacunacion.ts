@@ -4,6 +4,7 @@ export class EstadoVacunacion {
     apellidos: string;
     nombres: string;
     dni: string;
+    fechaNacimiento: string;
     grupoVacunaDTO: GrupoVacunaDTO[];
 
 }

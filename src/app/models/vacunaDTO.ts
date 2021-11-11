@@ -6,6 +6,7 @@ export class VacunaDTO {
     fechaCita: string;
     fechaVacunacion: string;
     lugar:string;
+    aplicado:boolean;
     reaccion:string;
     tipo:string;
 }

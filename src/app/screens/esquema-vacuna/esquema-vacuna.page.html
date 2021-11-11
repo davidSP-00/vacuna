@@ -27,34 +27,37 @@
       </ion-col>
       <ion-col size="4" >
         <div class="f-13">Edad</div>
-        <ion-text class="f-10 b">10 Meses</ion-text>
+        <ion-text class="f-10 b">{{obtenerMeses()}} Meses</ion-text>
       </ion-col>
     </ion-row>
 
 </ion-card>
-<ion-card >
-  <ion-header>
-    <ion-item>
-      <ion-icon name="checkmark-circle-outline"></ion-icon>
-      <div class="f-18 b"> &nbsp;Recien Nacido</div>
-      <!-- <ion-label>ion-item in a card, icon left, button right</ion-label> -->
-    <!--   <ion-button fill="clear" slot="end" color="dark">
-        <ion-icon name="ellipsis-vertical"></ion-icon>
-      </ion-button> -->
-      <ion-col slot="end" size="6" class="ion-text-right">
-        <div class="f-13">16-12-20</div>
-        <ion-text class="f-10">Fecha vacunacion</ion-text>
-      </ion-col>
+<ng-container *ngIf="estadoVacunacion">
+  <ion-card *ngFor="let grupoVacunaDTO of estadoVacunacion.grupoVacunaDTO;let i = index" >
+    <ion-header>
+      <ion-item>
+        <ion-icon [name]="validarCheck(grupoVacunaDTO)?'checkmark-circle':'checkmark-circle-outline'"></ion-icon>
+        <div class="f-18 b"> &nbsp;{{grupoVacunaDTO.edadAplica}}</div>
+        <!-- <ion-label>ion-item in a card, icon left, button right</ion-label> -->
+      <!--   <ion-button fill="clear" slot="end" color="dark">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button> -->
+        <ion-col slot="end" size="6" class="ion-text-right">
+          <div class="f-13">11-11-20</div>
+          <ion-text class="f-10">Fecha vacunacion</ion-text>
+        </ion-col>
+  
+      </ion-item>
+      <ion-item *ngFor="let vacunaDTO of grupoVacunaDTO.vacunaDTO">
+        <ion-icon [name]="vacunaDTO.aplicado?'checkmark-circle':'checkmark-circle-outline'"></ion-icon>
+        <ion-col>
+         <div class="f-15">{{vacunaDTO.categoria}}  <ion-icon name="information-circle-outline"></ion-icon> </div> 
+          <ion-text class="f-10">{{vacunaDTO.tipo}}</ion-text>
+        </ion-col>
+        
+      </ion-item>
+    </ion-header>
+  </ion-card>
+</ng-container>
 
-    </ion-item>
-    <ion-item>
-      <ion-icon name="checkmark-circle"></ion-icon>
-      <ion-col>
-       <div class="f-15">HVB(RN)  <ion-icon name="information-circle-outline"></ion-icon> </div> 
-        <ion-text class="f-10">Fecha vacunacion</ion-text>
-      </ion-col>
-      
-    </ion-item>
-  </ion-header>
-</ion-card>
 </ion-content>
