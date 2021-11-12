@@ -8,8 +8,7 @@ import { EstadoVacunacionService } from 'src/app/services/estado-vacunacion.serv
 import { HijoService } from 'src/app/services/hijo.service';
 import { LocalService } from 'src/app/services/local.service';
 import * as moment from 'moment';
-import { ActivatedRoute, Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-esquema-vacuna',
@@ -117,6 +116,7 @@ obtenerMeses(){
   }
 }
 aplicarVacuna(vacunaDTO:VacunaDTO){
+
   if(this.rol!='padre'){
 
   if(vacunaDTO.aplicado){
