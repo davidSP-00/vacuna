@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { VacunacionDTO } from '../models/vacunacionDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +15,7 @@ export class EstadoVacunacionService {
   }
   
 
+  registrarVacunacion(vacunacion:VacunacionDTO){
+return this.http.post(this.ruta + 'vacunacion', vacunacion);
+  }
 }

@@ -1,0 +1,30 @@
+<app-toolbar></app-toolbar>
+
+<ion-content class="screen-paciente">
+  <h6>Inicio > Padres y/o Apoderados > <b> Registro Hijo</b></h6>
+  <h1>Registro de Hijo</h1>
+
+  <ion-grid>
+    <ion-row  class="col-center">
+      <ion-col sizeXl="6" sizeLg="7" sizeMd="7" sizeSm="8" sizeXs="12">
+        <form [formGroup]="hijoForm"  class="ion-margin-top" (submit)="onSubmit()">
+          <app-input label="DNI" formControlName="dni"></app-input>
+          <app-input label="Nombres" formControlName="nombres"></app-input>
+          <app-input label="Apellidos" formControlName="apellidos"></app-input>
+          <app-input label="Fecha Nacimiento" formControlName="fechaNacimiento" type="date"></app-input>
+          <app-select label="Sexo" formControlName="sexo" [selectValues]="comboSexo"></app-select>
+          <!-- <app-input label="DNI del padre" formControlName="dniPadre"></app-input> -->
+          
+        
+          <ion-button shape="round" expand="full" type="submit" class="but">Guardar y continuar</ion-button>
+        </form>
+
+
+      </ion-col>
+      </ion-row>
+
+  </ion-grid>
+
+
+
+</ion-content>

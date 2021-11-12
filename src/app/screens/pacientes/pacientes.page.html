@@ -19,10 +19,10 @@
   <ion-grid>
     <ion-row class="col-center">
       <ion-col  sizeXl="6" sizeLg="7" sizeMd="7" sizeSm="8" sizeXs="12">
-        <ion-searchbar mode="ios" placeholder="Buscar por DNI, Nombre, Apellido"></ion-searchbar>
+        <ion-searchbar mode="ios" placeholder="Buscar por DNI" (ionInput)="filterList($event)"></ion-searchbar>
 
 
-        <ion-card *ngFor="let apoderado of apoderados">
+        <ion-card *ngFor="let apoderado of apoderadosFilter">
           <ion-header>
             <ion-item>
               <ion-checkbox></ion-checkbox>
@@ -66,7 +66,12 @@
           </ion-list>
           <ion-row class="col-center">
             <ion-col size="10">
-              <ion-button shape="round" expand="full" type="submit" class="but">Ver más</ion-button>
+              <ion-button shape="round" expand="full" type="submit" class="but" (click)="registrarVacuna(apoderado.dni)">Registrar Vacunación</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row class="col-center">
+            <ion-col size="10">
+              <ion-button shape="round" expand="full" type="submit" class="but" (click)="registrarHijo(apoderado.dni)">Registrar hijo</ion-button>
             </ion-col>
           </ion-row>
         </ion-card>

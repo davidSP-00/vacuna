@@ -23,7 +23,9 @@ const routes: Routes = [
     path: 'main',
     loadChildren: () => import('./screens/main/main.module').then( m => m.MainPageModule)
   },
-  {path: '**', redirectTo: 'login', pathMatch: 'full'},
+  {path: '**', redirectTo: 'login', pathMatch: 'full'}
+
+
   
 ];
 

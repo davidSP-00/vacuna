@@ -1,12 +1,13 @@
 export class VacunaDTO {
-    idCategoria: number;
-    categoria: string;
+    idVacunacion:number;
+    idVacuna:number;
+    nombreVacuna:string;
+    enfermedadesPreviene:string;
     descripcion: string;
-    dniVacunador: string;
+    aplicado:boolean;
     fechaCita: string;
     fechaVacunacion: string;
     lugar:string;
-    aplicado:boolean;
+    dniVacunador: string;
     reaccion:string;
-    tipo:string;
 }

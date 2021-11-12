@@ -32,6 +32,14 @@ const routes: Routes = [
        {
         path: 'esquema-vacuna',
         loadChildren: () => import('../esquema-vacuna/esquema-vacuna.module').then( m => m.EsquemaVacunaPageModule)
+      },
+      {
+        path: 'vacunacion-form',
+        loadChildren: () => import('../vacunacion-form/vacunacion-form.module').then( m => m.VacunacionFormPageModule)
+      },
+      {
+        path: 'hijo-form',
+        loadChildren: () => import('../hijo-form/hijo-form.module').then( m => m.HijoFormPageModule)
       }
     ]
    

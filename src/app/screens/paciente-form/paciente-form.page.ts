@@ -88,13 +88,12 @@ editable:boolean=true;
       hijo.fechaNacimiento=moment(this.secondForm.get('fechaNacimiento').value,'YYYY-MM-DD').unix().toString();
       this.hijoService.saveHijo(hijo).subscribe(res=>{
         console.log(res);
-        this.router.navigateByUrl('main/pacientes');
+        this.navCtrl.navigateForward('main/pacientes');
       },err=>{
         alert('Error al guardar');
       });
     }
   }
-
   obtenerCombos(){
     this.comboService.estadosCivil().subscribe(res=>{
       this.comboEstadosCivil=res;

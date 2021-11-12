@@ -14,7 +14,7 @@ import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/for
 export class InputComponent implements ControlValueAccessor,OnInit {
   @Input() label:string;
   @Input() type='text';
-  focused:boolean;
+  @Input() focused:boolean=false;
   _control: NgControl;
   value='';
   onTouched = () => {
@@ -39,12 +39,13 @@ export class InputComponent implements ControlValueAccessor,OnInit {
     //throw new Error('Method not implemented.');
   }
   registerOnChange(fn: any): void {
+    
    this.onChangeFn=fn;
   }
 
 
   registerOnTouched(fn: any): void {
-    console.log(fn)
+    
     this.onTouched = fn;
    // throw new Error('Method not implemented.');
   }
