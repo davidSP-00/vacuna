@@ -75,5 +75,9 @@ onSubmit(){
     }
     return
   }
+  ionViewWillEnter(){
+
+this.loginForm.reset();
+  }
 }
 

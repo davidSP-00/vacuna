@@ -51,8 +51,10 @@
       <ion-item *ngFor="let vacunaDTO of grupoVacunaDTO.vacunaDTO">
         <ion-icon [name]="vacunaDTO.aplicado?'checkmark-circle':'checkmark-circle-outline'" (click)="aplicarVacuna(vacunaDTO)"></ion-icon>
         <ion-col>
-         <div class="f-15">{{vacunaDTO.nombreVacuna}}  
-           <ion-icon name="information-circle-outline" (click)="informacionVacunacion(vacunaDTO.descripcion)"></ion-icon> 
+         <div class="f-15">{{vacunaDTO.nombreVacuna}}
+          <span title="{{vacunaDTO.descripcion}}" >  
+           <ion-icon name="information-circle-outline" slot="SA"  (click)="informacionVacunacion(vacunaDTO.descripcion)"></ion-icon> 
+          </span>
           </div> 
           <ion-text class="f-10">{{vacunaDTO.enfermedadesPreviene}}</ion-text>
         </ion-col>
