@@ -18,7 +18,7 @@ export class MainGuard implements CanActivate {
       
         return true;
       }else{
-        this.navCtrl.navigateForward('/login');
+        this.navCtrl.navigateRoot('/login');
         return false;
         
       }

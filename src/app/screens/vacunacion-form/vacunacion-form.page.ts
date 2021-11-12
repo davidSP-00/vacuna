@@ -2,6 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import * as moment from 'moment';
 import { VacunacionDTO } from 'src/app/models/vacunacionDTO';
 import { EstadoVacunacionService } from 'src/app/services/estado-vacunacion.service';
@@ -16,7 +17,7 @@ export class VacunacionFormPage implements OnInit {
   vacunacionForm:FormGroup;
   vacunaDTO:VacunacionDTO=new VacunacionDTO();
   constructor(
-    private route: ActivatedRoute,private localService:LocalService,private estadoVacunacionService:EstadoVacunacionService) { }
+    private route: ActivatedRoute,private localService:LocalService,private navCtrl:NavController,private estadoVacunacionService:EstadoVacunacionService) { }
 
   ngOnInit() {
     this.vacunacionForm=new FormGroup({
@@ -33,6 +34,7 @@ export class VacunacionFormPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       
       this.vacunaDTO.vacuna=params["idVacuna"];
+      this.vacunaDTO.idVacunacion=params["idVacunacion"];
       this.vacunaDTO.dniVacunador=this.localService.obtenerDatosSesion().dni;
       this.vacunaDTO.fechaCita=params["fechaCita"] as string;
       this.vacunaDTO.lugar=params["lugar"];
@@ -51,6 +53,7 @@ onSubmit(){
   this.estadoVacunacionService.registrarVacunacion(this.vacunaDTO).subscribe(
     (data)=>{
       console.log(data);
+      this.navCtrl.navigateForward('/main/pacientes');
     }
   );
   console.log(this.vacunaDTO);

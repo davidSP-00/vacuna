@@ -33,7 +33,7 @@
 
 </ion-card>
 <ng-container *ngIf="estadoVacunacion">
-  <ion-card *ngFor="let grupoVacunaDTO of estadoVacunacion.grupoVacunaDTO;let i = index" >
+  <ion-card *ngFor="let grupoVacunaDTO of estadoVacunacion.grupoVacunaDTO;let i = index">
     <ion-header>
       <ion-item>
         <ion-icon [name]="validarCheck(grupoVacunaDTO)?'checkmark-circle':'checkmark-circle-outline'"></ion-icon>
@@ -51,7 +51,9 @@
       <ion-item *ngFor="let vacunaDTO of grupoVacunaDTO.vacunaDTO">
         <ion-icon [name]="vacunaDTO.aplicado?'checkmark-circle':'checkmark-circle-outline'" (click)="aplicarVacuna(vacunaDTO)"></ion-icon>
         <ion-col>
-         <div class="f-15">{{vacunaDTO.nombreVacuna}}  <ion-icon name="information-circle-outline"></ion-icon> </div> 
+         <div class="f-15">{{vacunaDTO.nombreVacuna}}  
+           <ion-icon name="information-circle-outline" (click)="informacionVacunacion(vacunaDTO.descripcion)"></ion-icon> 
+          </div> 
           <ion-text class="f-10">{{vacunaDTO.enfermedadesPreviene}}</ion-text>
         </ion-col>
         
