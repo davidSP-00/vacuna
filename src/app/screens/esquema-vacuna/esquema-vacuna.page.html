@@ -52,8 +52,8 @@
         <ion-icon [name]="vacunaDTO.aplicado?'checkmark-circle':'checkmark-circle-outline'" (click)="aplicarVacuna(vacunaDTO)"></ion-icon>
         <ion-col>
          <div class="f-15">{{vacunaDTO.nombreVacuna}}
-          <span title="{{vacunaDTO.descripcion}}" >  
-           <ion-icon name="information-circle-outline" slot="SA"  (click)="informacionVacunacion(vacunaDTO.descripcion)"></ion-icon> 
+          <span title="{{vacunaDTO.descripcion}}"  (click)="informacionVacunacion(vacunaDTO.descripcion)">  
+           <ion-icon name="information-circle-outline"  ></ion-icon> 
           </span>
           </div> 
           <ion-text class="f-10">{{vacunaDTO.enfermedadesPreviene}}</ion-text>
