@@ -53,7 +53,7 @@ onSubmit(){
   this.estadoVacunacionService.registrarVacunacion(this.vacunaDTO).subscribe(
     (data)=>{
       console.log(data);
-      this.navCtrl.navigateForward('/main/pacientes');
+      this.navCtrl.navigateForward('/main/esquema-vacuna');
     }
   );
   console.log(this.vacunaDTO);

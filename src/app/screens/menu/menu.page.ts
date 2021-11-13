@@ -43,6 +43,42 @@ rol:string;
   constructor(private localService:LocalService) { }
 
   ngOnInit() {
+    
+    
+    
+  }
+  
+  ionViewWillEnter(){
+    this.items=[
+      {
+        routerLink:'/main/pacientes',
+        icon:'person-outline',
+        tipo:'ROLE_MEDICO',
+        titulo:'Padres y/o Apoderados',
+        descripcion:'Ver registrados y agregar nuevos'
+      },
+      {
+        routerLink:'/main/agenda',
+        icon:'calendar-outline',
+        tipo:'ROLE_MEDICO',
+        titulo:'Agenda de vacunación',
+        descripcion:'Ver la agenda por dia y mensual'
+      },
+      {
+        routerLink:'/main/esquema-vacuna',
+        icon:'calendar-outline',
+        tipo:'ROLE_USER',
+        titulo:'Esquema de vacunación',
+        descripcion:'Ver la agenda por dia y mensual'
+      },
+      {
+        routerLink:'/main/informacion-vacuna',
+        icon:'clipboard-outline',
+        tipo:'ROLE_USER',
+        titulo:'Información de las vacunas',
+        descripcion:'Conoce más de las vacunas'
+      }
+    ];
 
     this.rol=this.localService.obtenerRol();
     
@@ -54,11 +90,7 @@ rol:string;
         });
       
     
-    
-  }
-  
-  ionViewDidLeave(){
-    console.log('sd')
-    
-  }
+      }
+
+
 }
