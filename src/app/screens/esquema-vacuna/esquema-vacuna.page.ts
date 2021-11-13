@@ -133,8 +133,7 @@ aplicarVacuna(vacunaDTO:VacunaDTO){
 async informacionVacunacion(descripcion:string){
   const alert = await this.alertController.create({
   
-    
-    header: descripcion,
+    message:descripcion
     
 });
 await alert.present().then(
