@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component,  Input,  OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { LocalService } from 'src/app/services/local.service';
 
@@ -15,11 +15,12 @@ rol:string;
 
   ngOnInit() {
     
-    
+    this.ionViewWillEnter()
     
   }
   
   ionViewWillEnter(){
+    console.log('will')
     this.items=[
       {
         routerLink:'/main/pacientes',
@@ -76,6 +77,9 @@ rol:string;
       
     
       }
-
-
+      ngOnChanges() {
+        /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
+        //Write your code here
+         console.log("dsf");
+        }   
 }
