@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ComboService {
 
-  ruta: string = environment.ruta+'vacunas/'
+  ruta: string = environment.ruta+'combos/'
 
   constructor(private http: HttpClient) { }
 
