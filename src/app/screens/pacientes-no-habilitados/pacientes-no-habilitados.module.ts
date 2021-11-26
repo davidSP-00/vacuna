@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RegisterPageRoutingModule } from './register-routing.module';
+import { PacientesNoHabilitadosPageRoutingModule } from './pacientes-no-habilitados-routing.module';
 
-import { RegisterPage } from './register.page';
+import { PacientesNoHabilitadosPage } from './pacientes-no-habilitados.page';
 import { SharedModule } from 'src/app/components/shared.module';
 
 @NgModule({
@@ -16,8 +16,8 @@ import { SharedModule } from 'src/app/components/shared.module';
     IonicModule,
     ReactiveFormsModule,
     SharedModule,
-    RegisterPageRoutingModule
+    PacientesNoHabilitadosPageRoutingModule
   ],
-  declarations: [RegisterPage]
+  declarations: [PacientesNoHabilitadosPage]
 })
-export class RegisterPageModule {}
+export class PacientesNoHabilitadosPageModule {}

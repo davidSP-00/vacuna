@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RegisterPageRoutingModule } from './register-routing.module';
+import { LoginPadrePageRoutingModule } from './login-padre-routing.module';
 
-import { RegisterPage } from './register.page';
+import { LoginPadrePage } from './login-padre.page';
 import { SharedModule } from 'src/app/components/shared.module';
 
 @NgModule({
@@ -14,10 +14,10 @@ import { SharedModule } from 'src/app/components/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ReactiveFormsModule,
     SharedModule,
-    RegisterPageRoutingModule
+    ReactiveFormsModule,
+    LoginPadrePageRoutingModule
   ],
-  declarations: [RegisterPage]
+  declarations: [LoginPadrePage]
 })
-export class RegisterPageModule {}
+export class LoginPadrePageModule {}

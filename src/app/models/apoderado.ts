@@ -13,5 +13,9 @@ export class Apoderado{
         numeroHijos: number;
         tipoPoblacion: string;
         tipoTrabajo: string;
+
+        habilitado: boolean;
+        baja: boolean;
+        roles: string[];
       
 }

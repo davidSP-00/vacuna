@@ -18,5 +18,7 @@ export class ApoderadoService {
   saveApoderado(apoderado:Apoderado) {
     return this.http.post(this.ruta+'apoderado', apoderado);
   }
-
+  getApoderadosPorEstado(estado:boolean) {
+    return this.http.get(this.ruta+'apoderados/'+estado);
+  }
 }

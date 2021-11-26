@@ -26,7 +26,7 @@ this.router.navigate(['main/esquema-vacuna'],
 );
 }
 ionViewWillEnter(){
-  this.apoderadoService.getApoderados().subscribe(
+  this.apoderadoService.getApoderadosPorEstado(true).subscribe(
     (res:Apoderado[]) => {
       this.apoderadosFilter=res;
       this.apoderados=res;

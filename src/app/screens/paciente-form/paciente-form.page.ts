@@ -68,6 +68,9 @@ editable:boolean=true;
     if(this.firstForm.valid){
       let apoderado=this.firstForm.value as Apoderado;
       apoderado.fechaNacimiento=moment(this.firstForm.get('fechaNacimiento').value,'YYYY-MM-DD').unix().toString();
+      apoderado.habilitado=true;
+      apoderado.baja=false;
+      apoderado.roles=["user"];
       this.apoderadoService.saveApoderado(apoderado).subscribe(res=>{
         console.log(res);
         this.editable=false;
