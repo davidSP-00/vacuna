@@ -8,12 +8,15 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import { SharedModule } from 'src/app/components/shared.module';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule, AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDUWtfuGL-G8X9jxXavDKqB-TMqu9HyAoI'
+    }),
     LoginPageRoutingModule,
     ReactiveFormsModule,
     SharedModule

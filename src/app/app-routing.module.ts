@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'login-padre',
     pathMatch: 'full'
   },
  /*  {
@@ -27,10 +27,8 @@ const routes: Routes = [
     path: 'login-padre',
     loadChildren: () => import('./screens/login-padre/login-padre.module').then( m => m.LoginPadrePageModule)
   },
-  {path: '**', redirectTo: 'login', pathMatch: 'full'},  {
-    path: 'pacientes-no-habilitados',
-    loadChildren: () => import('./screens/pacientes-no-habilitados/pacientes-no-habilitados.module').then( m => m.PacientesNoHabilitadosPageModule)
-  },
+  {path: '**', redirectTo: 'login', pathMatch: 'full'},
+
 
   
 

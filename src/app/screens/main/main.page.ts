@@ -10,13 +10,7 @@ import { LocalService } from 'src/app/services/local.service';
 })
 export class MainPage implements OnInit {
   rol:string;
-  public appPages = [
-    { title: 'Inicio', url: '/main/menu', icon: 'home' ,tipo:'X'},
-    { title: 'Lista de Padres y/o Apoderados', url: '/main/pacientes', icon: 'people', tipo:'ROLE_MEDICO' },
-    { title: 'Agenda', url: '/main/agenda', icon: 'calendar',tipo:'ROLE_MEDICO' },
-    { title: 'Esquema Vacunación', url: '/main/esquema-vacuna', icon: 'calendar', tipo:'ROLE_USER'  },
-    { title: 'Informacion Vacunas', url: '/main/informacion-vacuna', icon: 'clipboard', tipo:'ROLE_USER'  },
-  ];
+  public appPages = [];
   constructor(private navCtrl:NavController,private localService:LocalService) { }
 
   ngOnInit() {
@@ -30,9 +24,11 @@ ionViewWillEnter(){
   this.appPages= [
     { title: 'Inicio', url: '/main/menu', icon: 'home' ,tipo:'X'},
     { title: 'Lista de Padres y/o Apoderados', url: '/main/pacientes', icon: 'people', tipo:'ROLE_MEDICO' },
+    { title: 'Apoderados no habilitados', url: '/main/pacientes-no-habilitados', icon: 'people', tipo:'ROLE_MEDICO'  },
     { title: 'Agenda', url: '/main/agenda', icon: 'calendar',tipo:'ROLE_MEDICO' },
     { title: 'Esquema Vacunación', url: '/main/esquema-vacuna', icon: 'calendar', tipo:'ROLE_USER'  },
     { title: 'Informacion Vacunas', url: '/main/informacion-vacuna', icon: 'clipboard', tipo:'ROLE_USER'  },
+    { title: 'Centros de vacunación', url: '/main/mapa', icon: 'map', tipo:'ROLE_USER'  },
   ];
 
   this.rol=this.localService.obtenerRol();

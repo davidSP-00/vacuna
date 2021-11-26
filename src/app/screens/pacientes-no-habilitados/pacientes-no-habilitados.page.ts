@@ -30,6 +30,7 @@ export class PacientesNoHabilitadosPage implements OnInit {
   }
   habilitar(apoderado:Apoderado){
     apoderado.habilitado=true;
+    apoderado.roles=["user"];
     this.apoderadoService.saveApoderado(apoderado).subscribe(
       res=>{
         alert("Se habilito el apoderado");

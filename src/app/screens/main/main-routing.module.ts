@@ -38,8 +38,16 @@ const routes: Routes = [
         loadChildren: () => import('../vacunacion-form/vacunacion-form.module').then( m => m.VacunacionFormPageModule)
       },
       {
+        path: 'pacientes-no-habilitados',
+        loadChildren: () => import('../pacientes-no-habilitados/pacientes-no-habilitados.module').then( m => m.PacientesNoHabilitadosPageModule)
+      },
+      {
         path: 'hijo-form',
         loadChildren: () => import('../hijo-form/hijo-form.module').then( m => m.HijoFormPageModule)
+      },
+      {
+        path: 'mapa',
+        loadChildren: () => import('../mapa/mapa.module').then( m => m.MapaPageModule)
       }
     ]
    

@@ -1,0 +1,17 @@
+<app-toolbar></app-toolbar>
+
+
+<ion-content>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13" [clickableIcons]="false">
+    <ng-container *ngFor="let ubicacion of ubicaciones">
+      <agm-marker [latitude]="ubicacion.latitud" [longitude]="ubicacion.longitud" >
+        <agm-info-window [disableAutoPan]="true">
+          {{ubicacion.direccion}}
+        </agm-info-window>
+    
+      </agm-marker>
+    </ng-container>
+    
+  </agm-map>
+
+</ion-content>
