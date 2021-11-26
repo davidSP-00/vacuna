@@ -20,7 +20,6 @@ rol:string;
   }
   
   ionViewWillEnter(){
-    console.log('will')
     this.items=[
       {
         routerLink:'/main/pacientes',
@@ -77,9 +76,4 @@ rol:string;
       
     
       }
-      ngOnChanges() {
-        /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
-        //Write your code here
-         console.log("dsf");
-        }   
 }
