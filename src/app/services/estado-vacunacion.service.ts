@@ -18,4 +18,10 @@ export class EstadoVacunacionService {
   registrarVacunacion(vacunacion:VacunacionDTO){
 return this.http.post(this.ruta + 'vacunacion', vacunacion);
   }
+  obtenerVacunas(){
+return this.http.get(this.ruta + 'vacunas');
+  }
+  vacunacionPorFechas(fechInicio:number,fechFin:number,idVacuna:number){
+    return this.http.get(this.ruta +  `vacunacion/${fechInicio}/${fechFin}/${idVacuna}`);
+      }
 }

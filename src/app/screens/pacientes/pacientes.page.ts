@@ -18,6 +18,7 @@ export class PacientesPage implements OnInit {
 
 
   }
+  
 registrarVacuna(dniPadre:string){
 this.router.navigate(['main/esquema-vacuna'],
 {queryParams:{

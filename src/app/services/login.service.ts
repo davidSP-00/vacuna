@@ -8,7 +8,7 @@ import { Usuario } from '../models/usuario';
   providedIn: 'root'
 })
 export class LoginService {
-  ruta:string=environment.ruta+'auth/login'
+  ruta:string=environment.ruta+'auth/login/usuario'
 
   constructor(private http:HttpClient) { }
 

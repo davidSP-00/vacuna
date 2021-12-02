@@ -63,6 +63,13 @@ rol:string;
         titulo:'Centros de Vacunación',
         descripcion:'Conoce la dirección de los centros de vacunación'
       },
+      {
+        routerLink:'/main/medicos',
+        icon:'person-outline',
+        tipo:'ROLE_ADMIN',
+        titulo:'Medicos',
+        descripcion:'Ver o agregar medicos'
+      },
     ];
 
     this.rol=this.localService.obtenerRol();

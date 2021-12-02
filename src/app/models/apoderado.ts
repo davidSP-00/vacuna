@@ -4,6 +4,7 @@ export class Apoderado{
         apellidos: string;
         celular: string;
         correo: string;
+        sexo:string;
         dni: string;
         fechaNacimiento:string;
         estadoCivil: string;
