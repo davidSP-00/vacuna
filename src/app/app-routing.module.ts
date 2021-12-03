@@ -28,6 +28,8 @@ const routes: Routes = [
     loadChildren: () => import('./screens/login-padre/login-padre.module').then( m => m.LoginPadrePageModule)
   },
   {path: '**', redirectTo: 'login', pathMatch: 'full'},
+  
+
  
 
   

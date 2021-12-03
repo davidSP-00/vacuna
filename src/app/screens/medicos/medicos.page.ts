@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Medico } from 'src/app/models/medico';
+import { ApoderadoService } from 'src/app/services/apoderado.service';
 import { MedicoService } from 'src/app/services/medico.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class MedicosPage implements OnInit {
   medicos: Medico[];
   medicosFilter: Medico[];
 
-  constructor(private medicoService: MedicoService) { }
+  constructor(private medicoService: MedicoService,private apoderadoService:ApoderadoService) { }
 
   ngOnInit() {
   }
@@ -33,4 +34,12 @@ export class MedicosPage implements OnInit {
     });
   }
 
+  darBaja(medico: Medico) {
+    medico.baja=!medico.baja;
+    this.apoderadoService.saveApoderado(medico).subscribe(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    });
+  }
 }

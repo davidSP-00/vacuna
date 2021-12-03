@@ -55,6 +55,9 @@ const routes: Routes = [
       }, {
         path: 'medico-form',
         loadChildren: () => import('../medico-form/medico-form.module').then( m => m.MedicoFormPageModule)
+      },{
+        path: 'reporte-vacunacion',
+        loadChildren: () => import('../reporte-vacunacion/reporte-vacunacion.module').then( m => m.ReporteVacunacionPageModule)
       },
     ]
 

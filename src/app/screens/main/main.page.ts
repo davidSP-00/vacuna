@@ -30,6 +30,7 @@ ionViewWillEnter(){
     { title: 'Informacion Vacunas', url: '/main/informacion-vacuna', icon: 'clipboard', tipo:'ROLE_USER'  },
     { title: 'Centros de vacunación', url: '/main/mapa', icon: 'map', tipo:'ROLE_USER'  },
     { title: 'Medicos', url: '/main/medicos', icon: 'people', tipo:'ROLE_ADMIN'  },
+    { title: 'Proximas Citas', url: '/main/reporte-vacunacion', icon: 'calendar',tipo:'ROLE_MEDICO' },
   ];
 
   this.rol=this.localService.obtenerRol();

@@ -67,7 +67,7 @@
          
           <ion-row class="col-center">
             <ion-col size="10">
-              <ion-button shape="round" expand="full" type="submit" class="but" >Dar de baja</ion-button>
+              <ion-button shape="round" expand="full" type="submit" class="but" (click)="darBaja(medico)">{{medico.baja?'Habilitar':'Dar de Baja'}}</ion-button>
             </ion-col>
           </ion-row>
         </ion-card>

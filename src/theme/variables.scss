@@ -1,4 +1,5 @@
 /* For use in src/lib/core/theming/_palette.scss */
+
 $md-mcgpalette0: (
     50 : #ebebeb,
     100 : #cdcdcd,
@@ -67,7 +68,9 @@ $app-theme: mat.define-light-theme((
 // that you are using.
 
 @include mat.all-component-themes($app-theme);
-
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 

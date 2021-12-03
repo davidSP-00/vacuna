@@ -53,7 +53,7 @@ export class MedicoFormPage implements OnInit {
     this.medicoForm.markAllAsTouched();
     if(this.medicoForm.valid){
       let medico=this.medicoForm.value as Medico;
-      medico.habilitado=false;
+      medico.habilitado=true;
       medico.baja=false;
       medico.roles=["medico"];
       medico.fechaNacimiento=moment(this.medicoForm.get('fechaNacimiento').value,'YYYY-MM-DD').unix().toString();

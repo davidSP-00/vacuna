@@ -1,0 +1,33 @@
+<app-toolbar></app-toolbar>
+
+
+<ion-content>
+  <form [formGroup]="reporteForm">
+  <ion-grid>
+   <ion-row>
+    <ion-col sizeXl="3" sizeLg="3" sizeMd="4" sizeSm="4" sizeXs="12"> <app-input label="Fecha Inicio" formControlName="fechaIni" type="date"></app-input>
+    </ion-col> 
+    <ion-col sizeXl="3" sizeLg="3" sizeMd="4" sizeSm="4" sizeXs="12"> <app-input label="Fecha Fin" formControlName="fechaFin" type="date"></app-input>
+
+    </ion-col> 
+    <ion-col sizeXl="3" sizeLg="3" sizeMd="4" sizeSm="4" sizeXs="12"> <app-select label="Vacuna" formControlName="idVacuna" [selectValues]="vacunas"></app-select>
+
+    </ion-col> 
+    <ion-col sizeXl="3" sizeLg="3" sizeMd="4" sizeSm="4" sizeXs="12"> <app-select label="Ubicacion" formControlName="idUbicacion" [selectValues]="ubicaciones"></app-select>
+
+    </ion-col> 
+   </ion-row> 
+   <ion-row  class="col-center">
+     <ion-button (click)="buscar()"> Buscar</ion-button>
+   </ion-row>
+    <ion-row>
+      <ion-col>
+        <ngx-datatable class="material" [rows]="rows" [columns]="columns" [rowHeight]="40"  [headerHeight]="40"> </ngx-datatable>
+ 
+      </ion-col>
+    </ion-row>
+  
+  </ion-grid>
+ 
+</form>
+</ion-content>
