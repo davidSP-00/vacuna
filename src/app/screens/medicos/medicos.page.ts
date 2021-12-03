@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { Medico } from 'src/app/models/medico';
 import { ApoderadoService } from 'src/app/services/apoderado.service';
 import { MedicoService } from 'src/app/services/medico.service';
@@ -12,7 +14,7 @@ export class MedicosPage implements OnInit {
   medicos: Medico[];
   medicosFilter: Medico[];
 
-  constructor(private medicoService: MedicoService,private apoderadoService:ApoderadoService) { }
+  constructor(private medicoService: MedicoService,private apoderadoService:ApoderadoService,private navCrtl:NavController) { }
 
   ngOnInit() {
   }
@@ -41,5 +43,15 @@ export class MedicosPage implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+  editarMedico(medico:Medico){
+
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: medico,
+      }
+    };
+    this.navCrtl.navigateForward('/main/medico-form',navigationExtras);
+  
   }
 }

@@ -5,6 +5,7 @@ import { Hijo } from 'src/app/models/hijo';
 import * as moment from 'moment';
 import { HijoService } from 'src/app/services/hijo.service';
 import { NavController } from '@ionic/angular';
+import { ComboService } from 'src/app/services/combo.service';
 @Component({
   selector: 'app-hijo-form',
   templateUrl: './hijo-form.page.html',
@@ -16,7 +17,9 @@ export class HijoFormPage implements OnInit {
     {valor:'M' ,descripcion:'Masculino'},
     {valor:'F' ,descripcion:'Femenino'}
   ]
-  constructor(private route: ActivatedRoute,private navCtrl:NavController,private hijoService:HijoService) { }
+  comboNivelRiesgo:any[]=[];
+  constructor(private route: ActivatedRoute,private navCtrl:NavController,private hijoService:HijoService,
+    private comboService:ComboService) { }
 
   ngOnInit() {
     this.hijoForm=new FormGroup({
@@ -26,6 +29,7 @@ export class HijoFormPage implements OnInit {
       fechaNacimiento:new FormControl('',Validators.required),
       sexo:new FormControl('',Validators.required),
       dniPadre:new FormControl('',Validators.required),
+      nivelRiesgo:new FormControl('',Validators.required),
   
     })
     this.route.queryParams.subscribe(params => {
@@ -36,6 +40,7 @@ this.hijoForm.controls['dniPadre'].setValue(params['dniPadre']);
       }
       });
   
+      this.obtenerCombo()
 
     
   }
@@ -55,5 +60,13 @@ this.hijoForm.controls['dniPadre'].setValue(params['dniPadre']);
         alert('Error al guardar');
       });
     }
+  }
+
+  obtenerCombo(){
+    this.comboService.nivelesRiesgo().subscribe(res=>{
+    console.log(res);
+    this.comboNivelRiesgo=res;
+
+    });
   }
 }

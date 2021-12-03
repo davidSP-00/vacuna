@@ -8,8 +8,8 @@
     <ion-row  class="col-center">
       <ion-col sizeXl="6" sizeLg="7" sizeMd="7" sizeSm="8" sizeXs="12">
       <form [formGroup]="vacunacionForm" (submit)="onSubmit()">
-        <app-input label="Lote"  formControlName="lote" [focused]="true"></app-input>
-        <app-input label="Lugar" formControlName="lugar" [focused]="true"></app-input>
+        <app-input label="Lote"  formControlName="lote" [focused]="true" ></app-input>
+        <app-select label="Lugar" formControlName="lugar" [focused]="true" [selectValues]="comboUbicacion" > </app-select>
         <app-input label="Reaccion" formControlName="reaccion" [focused]="true"></app-input>
         <ion-item-divider class="ion-margin-bottom">
           <ion-label>

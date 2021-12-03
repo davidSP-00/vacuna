@@ -27,5 +27,8 @@ export class ComboService {
   tiposTrabajo(): Observable<any> {
     return this.http.get(this.ruta + 'tiposTrabajo');
   }
+  nivelesRiesgo(): Observable<any> {
+    return this.http.get(this.ruta + 'nivelesRiesgo');
+  }
 
 }

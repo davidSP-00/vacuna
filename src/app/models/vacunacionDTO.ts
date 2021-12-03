@@ -7,4 +7,6 @@ export class VacunacionDTO {
     lugar:string;
     dniVacunador:string;
     reaccion:string;
+    idUbicacion:string;
+    idVacuna:string;
 }

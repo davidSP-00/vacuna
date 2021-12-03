@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import * as moment from 'moment';
 import { VacunacionDTO } from 'src/app/models/vacunacionDTO';
+import { UbicacionService } from 'src/app/services/ubicacion.service';
 import { EstadoVacunacionService } from 'src/app/services/estado-vacunacion.service';
 import { LocalService } from 'src/app/services/local.service';
 
@@ -16,8 +17,12 @@ import { LocalService } from 'src/app/services/local.service';
 export class VacunacionFormPage implements OnInit {
   vacunacionForm:FormGroup;
   vacunaDTO:VacunacionDTO=new VacunacionDTO();
+  comboUbicacion:any[]=[];
   constructor(
-    private route: ActivatedRoute,private localService:LocalService,private navCtrl:NavController,private estadoVacunacionService:EstadoVacunacionService) { }
+    private route: ActivatedRoute,
+    private localService:LocalService,
+    private navCtrl:NavController,private estadoVacunacionService:EstadoVacunacionService,
+    private ubicacionService:UbicacionService) { }
 
   ngOnInit() {
     this.vacunacionForm=new FormGroup({
@@ -32,24 +37,25 @@ export class VacunacionFormPage implements OnInit {
       
     })
     this.route.queryParams.subscribe(params => {
-      
-      this.vacunaDTO.vacuna=params["idVacuna"];
+      this.vacunaDTO.idVacuna=params["idVacuna"];
       this.vacunaDTO.idVacunacion=params["idVacunacion"];
       this.vacunaDTO.dniVacunador=this.localService.obtenerDatosSesion().dni;
-      this.vacunaDTO.fechaCita=params["fechaCita"] as string;
-      this.vacunaDTO.lugar=params["lugar"];
+      /* this.vacunaDTO.fechaCita=params["fechaCita"] as string; */
+      /* this.vacunaDTO.idVacunacion=params["lugar"]; */
       this.vacunaDTO.dni=params["dni"];
-      this.vacunaDTO.reaccion=params["reaccion"];
+      /* this.vacunaDTO.reaccion=params["reaccion"]; */
       this.vacunaDTO.dni
       console.log(params["idVacunacion"]);
       console.log(this.vacunaDTO);
       this.vacunacionForm.reset(this.vacunaDTO);
       });
-    
+      this.obtenerCombo()
   }
 onSubmit(){
-  this.vacunaDTO=this.vacunacionForm.value;
-  this.vacunaDTO.fechaCita=moment(this.vacunaDTO.fechaCita,'YYYY-MM-DD').unix().toString();
+  this.vacunaDTO.idUbicacion=this.vacunacionForm.get('lugar').value;
+  this.vacunaDTO.fechaCita=moment(this.vacunacionForm.get('fechaCita').value,'YYYY-MM-DD').unix().toString();
+  this.vacunaDTO.reaccion=this.vacunacionForm.get('reaccion').value;
+  this.vacunaDTO.lote=this.vacunacionForm.get('lote').value;
   this.estadoVacunacionService.registrarVacunacion(this.vacunaDTO).subscribe(
     (data)=>{
       console.log(data);
@@ -57,5 +63,12 @@ onSubmit(){
     }
   );
   console.log(this.vacunaDTO);
+}
+obtenerCombo(){
+  this.ubicacionService.obtenerUbicaciones().subscribe(res=>{
+  console.log(res);
+  this.comboUbicacion=res;
+
+  });
 }
 }

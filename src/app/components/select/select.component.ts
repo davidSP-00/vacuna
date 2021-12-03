@@ -14,24 +14,28 @@ import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/for
 export class SelectComponent implements ControlValueAccessor,OnInit {
   @Input() label:string;
   @Input() selectValues=[];
+  @Input()
   focused:boolean;
   _control: NgControl;
-  /* value=''; */
+  value='';
   onTouched = () => {
   };
   private onChangeFn:Function;
   constructor(@Inject(INJECTOR) private injector: Injector) {
    }
   writeValue(obj: any): void {
-   /*  this.value=obj; */
+    this.value=obj;
+    console.log('write value')
     //throw new Error('Method not implemented.');
   }
   registerOnChange(fn: any): void {
     this.onChangeFn=fn;
+    console.log('onchange')
     //throw new Error('Method not implemented.');
   }
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+    console.log('on touched')
     //throw new Error('Method not implemented.');
   }
   setDisabledState?(isDisabled: boolean): void {
@@ -44,6 +48,7 @@ export class SelectComponent implements ControlValueAccessor,OnInit {
       return this._control.invalid &&this._control.touched;
     }
     changeEvent($event:any): void{
-      this.onChangeFn($event.target.value);
+      console.log($event)
+      this.onChangeFn($event);
     }
 }

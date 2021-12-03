@@ -5,6 +5,7 @@ import { Medico } from 'src/app/models/medico';
 import { ApoderadoService } from 'src/app/services/apoderado.service';
 import { ComboService } from 'src/app/services/combo.service';
 import * as moment from 'moment';
+import {  ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-medico-form',
@@ -25,28 +26,56 @@ export class MedicoFormPage implements OnInit {
     {valor:'M' ,descripcion:'Masculino'},
     {valor:'F' ,descripcion:'Femenino'}
   ]
-  constructor(private comboService:ComboService,private apoderadoService:ApoderadoService,private navCtrl:NavController) { }
+  constructor(private comboService:ComboService,private apoderadoService:ApoderadoService,private navCtrl:NavController,private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.medicoForm=new FormGroup({
-      dni:new  FormControl('',Validators.required),
-      nombres:new FormControl('',Validators.required),
-      apellidos:new FormControl('',Validators.required),
-      sexo:new FormControl('',Validators.required),
-      celular:new FormControl('',Validators.required),
-      correo:new FormControl('',Validators.required),
-      fechaNacimiento:new FormControl('',Validators.required),
-      estadoCivil:new FormControl('',Validators.required),
-      nivelEducacion:new FormControl('',Validators.required),
-      tipoTrabajo:new FormControl('',Validators.required),
-      nivelSocioEconomico:new FormControl('',Validators.required),
-      tipoPoblacion:new FormControl('',Validators.required),
-     /*  numeroHijos:new FormControl('',Validators.required), */
-      /* familiar:new FormControl('',Validators.required), */
-      
+    this.route.queryParams.subscribe(params => {
+     
+      if(params.data?.dni){
+        this.medicoForm=new FormGroup({
+          dni:new  FormControl(params.data.dni,Validators.required),
+          nombres:new FormControl(params.data.nombres,Validators.required),
+          apellidos:new FormControl(params.data.apellidos,Validators.required),
+          sexo:new FormControl(params.data.sexo,Validators.required),
+          celular:new FormControl(params.data.celular,Validators.required),
+          correo:new FormControl(params.data.correo,Validators.required),
+          fechaNacimiento:new FormControl(new Date().toISOString().substring(0, 10),Validators.required),
+          estadoCivil:new FormControl(params.data.estadoCivil,Validators.required),
+          nivelEducacion:new FormControl(params.data.nivelEducacion,Validators.required),
+          tipoTrabajo:new FormControl(params.data.tipoTrabajo,Validators.required),
+          nivelSocioEconomico:new FormControl(params.data.nivelSocioEconomico,Validators.required),
+          tipoPoblacion:new FormControl(params.data.tipoPoblacion,Validators.required),
+          
+    
+        })
+        
+      }else{
+        this.medicoForm=new FormGroup({
+          dni:new  FormControl('',Validators.required),
+          nombres:new FormControl('',Validators.required),
+          apellidos:new FormControl('',Validators.required),
+          sexo:new FormControl('',Validators.required),
+          celular:new FormControl('',Validators.required),
+          correo:new FormControl('',Validators.required),
+          fechaNacimiento:new FormControl('',Validators.required),
+          estadoCivil:new FormControl('',Validators.required),
+          nivelEducacion:new FormControl('',Validators.required),
+          tipoTrabajo:new FormControl('',Validators.required),
+          nivelSocioEconomico:new FormControl('',Validators.required),
+          tipoPoblacion:new FormControl('',Validators.required),
+         /*  numeroHijos:new FormControl('',Validators.required), */
+          /* familiar:new FormControl('',Validators.required), */
+          
+    
+        })
+      }
+  });
+    
 
-    })
     this.obtenerCombos();
+
+    
+   
   }
 
   firstFormSubmit(){

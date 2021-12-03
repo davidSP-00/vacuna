@@ -7,26 +7,26 @@
     <ion-row  class="col-center">
       <ion-col sizeLg="4" sizeMd="6" sizeXs="10" >
         <form [formGroup]="medicoForm"  class="ion-margin-top" (submit)="firstFormSubmit()">
-          <app-input label="DNI" formControlName="dni" type="number"></app-input>
-          <app-input label="Nombres" formControlName="nombres"></app-input>
-          <app-input label="Apellidos" formControlName="apellidos"></app-input>
-          <app-select label="Sexo" formControlName="sexo" [selectValues]="comboSexo" ></app-select>
-          <app-input label="Celular o Teléfono" formControlName="celular" type="number"></app-input>
-          <app-input label="Correo" formControlName="correo" type="email"></app-input>
+          <app-input label="DNI" formControlName="dni" type="number" [focused]="true"></app-input>
+          <app-input label="Nombres" formControlName="nombres" [focused]="true"></app-input>
+          <app-input label="Apellidos" formControlName="apellidos" [focused]="true"></app-input>
+          <app-select label="Sexo" formControlName="sexo" [selectValues]="comboSexo" [focused]="true"></app-select>
+          <app-input label="Celular o Teléfono" formControlName="celular" type="number" [focused]="true"></app-input>
+          <app-input label="Correo" formControlName="correo" type="email" [focused]="true"></app-input>
           <ion-row>
             <ion-col size="6" class="ion-no-padding">
   
-              <app-input label="Fecha Nacimiento" formControlName="fechaNacimiento" type="date"></app-input>
+              <app-input label="Fecha Nacimiento" formControlName="fechaNacimiento" type="date" [focused]="true"></app-input>
             </ion-col>
             <ion-col size="6" class="ion-no-padding">
   
-              <app-select label="Estado Civil" formControlName="estadoCivil" [selectValues]="comboEstadosCivil"></app-select>
+              <app-select label="Estado Civil" formControlName="estadoCivil" [selectValues]="comboEstadosCivil"  [focused]="true"></app-select>
             </ion-col>
           </ion-row>
-          <app-select label="Nivel de Educación" formControlName="nivelEducacion" [selectValues]="comboNivelesEducacion"></app-select>
-          <app-select label="Ocupación" formControlName="tipoTrabajo" [selectValues]="comboTiposTrabajo"></app-select>
-          <app-select label="Nivel de Ingresos" formControlName="nivelSocioEconomico" [selectValues]="comboNivelesSocioeconomico"></app-select>
-          <app-select label="Tipos de residencia" formControlName="tipoPoblacion" [selectValues]="comboTiposPoblacion"></app-select>
+          <app-select label="Nivel de Educación" formControlName="nivelEducacion" [selectValues]="comboNivelesEducacion"  [focused]="true"></app-select>
+          <app-select label="Ocupación" formControlName="tipoTrabajo" [selectValues]="comboTiposTrabajo"  [focused]="true"></app-select>
+          <app-select label="Nivel de Ingresos" formControlName="nivelSocioEconomico" [selectValues]="comboNivelesSocioeconomico"  [focused]="true"></app-select>
+          <app-select label="Tipos de residencia" formControlName="tipoPoblacion" [selectValues]="comboTiposPoblacion"  [focused]="true"></app-select>
           <!-- <ion-row>
             <ion-col size="6" class="ion-padding-top"><ion-label >Numero de hijos:</ion-label></ion-col>
             <ion-col size="3">
