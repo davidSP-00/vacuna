@@ -25,12 +25,11 @@ ionViewWillEnter(){
     { title: 'Inicio', url: '/main/menu', icon: 'home' ,tipo:'X'},
     { title: 'Lista de Padres y/o Apoderados', url: '/main/pacientes', icon: 'people', tipo:'ROLE_MEDICO' },
     { title: 'Apoderados no habilitados', url: '/main/pacientes-no-habilitados', icon: 'people', tipo:'ROLE_MEDICO'  },
-    { title: 'Agenda', url: '/main/agenda', icon: 'calendar',tipo:'ROLE_MEDICO' },
+    { title: 'Agenda', url: '/main/reporte-vacunacion', icon: 'calendar',tipo:'ROLE_MEDICO' },
     { title: 'Esquema Vacunación', url: '/main/esquema-vacuna', icon: 'calendar', tipo:'ROLE_USER'  },
     { title: 'Informacion Vacunas', url: '/main/informacion-vacuna', icon: 'clipboard', tipo:'ROLE_USER'  },
     { title: 'Centros de vacunación', url: '/main/mapa', icon: 'map', tipo:'ROLE_USER'  },
-    { title: 'Medicos', url: '/main/medicos', icon: 'people', tipo:'ROLE_ADMIN'  },
-    { title: 'Proximas Citas', url: '/main/reporte-vacunacion', icon: 'calendar',tipo:'ROLE_MEDICO' },
+    { title: 'Medicos', url: '/main/medicos', icon: 'people', tipo:'ROLE_ADMIN'  }
   ];
 
   this.rol=this.localService.obtenerRol();

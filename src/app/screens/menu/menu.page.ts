@@ -29,7 +29,7 @@ rol:string;
         descripcion:'Ver registrados y agregar nuevos'
       },
       {
-        routerLink:'/main/agenda',
+        routerLink:'/main/reporte-vacunacion',
         icon:'calendar-outline',
         tipo:'ROLE_MEDICO',
         titulo:'Agenda de vacunación',
@@ -69,14 +69,7 @@ rol:string;
         tipo:'ROLE_ADMIN',
         titulo:'Medicos',
         descripcion:'Ver o agregar medicos'
-      },
-      {
-        routerLink:'/main/reporte-vacunacion',
-        icon:'calendar-outline',
-        tipo:'ROLE_MEDICO',
-        titulo:'Proximas Citas',
-        descripcion:'Ver reporte de proxima citas'
-      },
+      }
     ];
 
     this.rol=this.localService.obtenerRol();

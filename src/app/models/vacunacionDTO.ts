@@ -9,4 +9,5 @@ export class VacunacionDTO {
     reaccion:string;
     idUbicacion:string;
     idVacuna:string;
+    idUbicacionCita:string;
 }

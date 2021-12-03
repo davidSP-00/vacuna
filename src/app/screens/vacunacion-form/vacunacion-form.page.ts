@@ -32,6 +32,7 @@ export class VacunacionFormPage implements OnInit {
       vacuna:new  FormControl('',Validators.required),
       fechaCita:new  FormControl('',Validators.required),
       lugar:new  FormControl('',Validators.required),
+      idUbicacionCita:new  FormControl('',Validators.required),
       dniVacunador:new  FormControl('',Validators.required),
       reaccion:new FormControl('',Validators.required),
       
@@ -53,6 +54,7 @@ export class VacunacionFormPage implements OnInit {
   }
 onSubmit(){
   this.vacunaDTO.idUbicacion=this.vacunacionForm.get('lugar').value;
+  this.vacunaDTO.idUbicacionCita=this.vacunacionForm.get('idUbicacionCita').value;
   this.vacunaDTO.fechaCita=moment(this.vacunacionForm.get('fechaCita').value,'YYYY-MM-DD').unix().toString();
   this.vacunaDTO.reaccion=this.vacunacionForm.get('reaccion').value;
   this.vacunaDTO.lote=this.vacunacionForm.get('lote').value;

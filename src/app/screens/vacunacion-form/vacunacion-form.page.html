@@ -16,6 +16,7 @@
             Proxima Vacunacíon
           </ion-label>
         </ion-item-divider>
+        <app-select label="Lugar" formControlName="idUbicacionCita" [focused]="true" [selectValues]="comboUbicacion" > </app-select>
         <app-input label="Fecha Cita" formControlName="fechaCita" type="date"></app-input>
 
         <ion-button shape="round" expand="full" type="submit" class="but">Guardar vacunación</ion-button>
