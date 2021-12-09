@@ -9,7 +9,7 @@ export class Apoderado{
         fechaNacimiento:string;
         estadoCivil: string;
         nivelEducacion: string;
-        nivelSocioEconomico: string;
+        nivelSocioeconomico: string;
         nombres: string;
         numeroHijos: number;
         tipoPoblacion: string;

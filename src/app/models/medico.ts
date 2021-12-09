@@ -9,7 +9,7 @@ export class Medico{
     estadoCivil: string;
     nivelEducacion: string;
     tipoTrabajo: string;
-    nivelSocioEconomico: string;
+    nivelSocioeconomico: string;
     tipoPoblacion: string;
     numeroHijos: number;
     roles: string[];
