@@ -59,6 +59,10 @@ const routes: Routes = [
         path: 'reporte-vacunacion',
         loadChildren: () => import('../reporte-vacunacion/reporte-vacunacion.module').then( m => m.ReporteVacunacionPageModule)
       },
+      {
+        path: 'notificacion',
+        loadChildren: () => import('../notificacion/notificacion.module').then( m => m.NotificacionPageModule)
+      }
     ]
 
   },

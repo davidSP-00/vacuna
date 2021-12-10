@@ -73,6 +73,13 @@ rol:string;
         tipo:'ROLE_ADMIN',
         titulo:'Medicos',
         descripcion:'Ver o agregar medicos'
+      },
+      {
+        routerLink:'/main/notificacion',
+        icon:'notifications',
+        tipo:'ROLE_ADMIN',
+        titulo:'Notificaciones',
+        descripcion:'Mantenimiento de Notificaciones'
       }
     ];
 

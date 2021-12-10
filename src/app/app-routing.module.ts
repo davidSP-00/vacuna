@@ -27,20 +27,8 @@ const routes: Routes = [
     path: 'login-padre',
     loadChildren: () => import('./screens/login-padre/login-padre.module').then( m => m.LoginPadrePageModule)
   },
-  {path: '**', redirectTo: 'login', pathMatch: 'full'},
-  
+  {path: '**', redirectTo: 'login', pathMatch: 'full'}
 
- 
-
-  
-
-
-
-  
-
-
-
-  
 ];
 
 @NgModule({

@@ -1,0 +1,22 @@
+<app-toolbar></app-toolbar>
+
+<ion-content class="screen-paciente">
+  <h6>Inicio > <b>  Notificaciones</b></h6>
+  <h1>Notificación</h1>
+  <ion-grid>
+    <ion-row class="col-center">
+      <ion-col sizeLg="4" sizeMd="6" sizeXs="10" >
+      <form [formGroup]="notificacionForm"  class="ion-margin-top"  (submit)="onSubmit()">
+        <ion-label style="color: #fafafa;">Notificacion</ion-label>
+        <ion-item class="ion-margin-bottom">
+          <ion-textarea formControlName="mensaje" rows="6" cols="20" placeholder="Ingrese Notificacion..."></ion-textarea>
+        </ion-item>
+        
+        <app-select label="Frecuencia" formControlName="frecuencia" [selectValues]="comboFrecuencia" [focused]="true"></app-select>
+        <ion-button shape="round" expand="full" type="submit" class="but" >Guardar</ion-button>
+     
+      </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
