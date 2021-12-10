@@ -30,6 +30,7 @@ export class MedicoFormPage implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
+      console.log(params.data);
      
       if(params.data?.dni){
         this.medicoForm=new FormGroup({
@@ -39,7 +40,7 @@ export class MedicoFormPage implements OnInit {
           sexo:new FormControl(params.data.sexo,Validators.required),
           celular:new FormControl(params.data.celular,Validators.required),
           correo:new FormControl(params.data.correo,Validators.required),
-          fechaNacimiento:new FormControl(new Date().toISOString().substring(0, 10),Validators.required),
+          fechaNacimiento:new FormControl(moment.unix(params.data.fechaNacimiento as number).toDate().toISOString().substring(0, 10),Validators.required),
           estadoCivil:new FormControl(params.data.estadoCivil,Validators.required),
           nivelEducacion:new FormControl(params.data.nivelEducacion,Validators.required),
           tipoTrabajo:new FormControl(params.data.tipoTrabajo,Validators.required),
@@ -84,7 +85,16 @@ export class MedicoFormPage implements OnInit {
       let medico=this.medicoForm.value as Medico;
       medico.habilitado=true;
       medico.baja=false;
-      medico.roles=["medico"];
+      
+      this.route.queryParams.subscribe(params => {
+        console.log(params.data);
+        if(params.data?.dni){
+medico.roles=params.data.roles;
+          }else{
+            medico.roles=["medico"];
+          }});
+      
+      
       medico.fechaNacimiento=moment(this.medicoForm.get('fechaNacimiento').value,'YYYY-MM-DD').unix().toString();
       
       this.apoderadoService.saveApoderado(medico).subscribe(res=>{

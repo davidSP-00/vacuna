@@ -1,5 +1,6 @@
 import { Component,  Input,  OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
+import { EmitterService } from 'src/app/services/emitter.service';
 import { LocalService } from 'src/app/services/local.service';
 
 @Component({
@@ -11,11 +12,14 @@ export class MenuPage implements OnInit {
 rol:string;
   items=[];
 
-  constructor(private localService:LocalService) { }
+  constructor(private localService:LocalService,private emitter:EmitterService) { }
 
   ngOnInit() {
     
     this.ionViewWillEnter()
+    this.emitter.menu.subscribe(()=>{
+      this.ionViewWillEnter();
+    })
     
   }
   

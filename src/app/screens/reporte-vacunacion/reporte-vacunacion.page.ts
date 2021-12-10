@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 import * as moment from 'moment';
 import { VacunaDTO } from 'src/app/models/vacunaDTO';
 import { EstadoVacunacionService } from 'src/app/services/estado-vacunacion.service';
@@ -22,15 +23,15 @@ export class ReporteVacunacionPage implements OnInit {
   constructor(private estadoVacunacionService:EstadoVacunacionService,private ubicacionService:UbicacionService ) { }
 
   reporteForm:FormGroup;
-
+  ColumnMode = ColumnMode;
   vacunas:any[]=[];
   ubicaciones:any[]=[];
 
   ngOnInit() {
 
     this.reporteForm=new FormGroup({
-      fechaIni:new  FormControl('',Validators.required),
-      fechaFin:new FormControl('',Validators.required),
+      fechaIni:new  FormControl(new Date().toISOString().substring(0, 10),Validators.required),
+      fechaFin:new FormControl(new Date().toISOString().substring(0, 10),Validators.required),
       idVacuna:new FormControl(0),
       idUbicacion:new FormControl(0),
     })
@@ -53,7 +54,7 @@ export class ReporteVacunacionPage implements OnInit {
     this.ubicaciones=data;
     
     data.splice(0,0,{id:0,descripcion:'Todas'});
-    console.log(data);
+    this.buscar();
     },()=>{
       console.log('error');
     });
@@ -71,7 +72,7 @@ export class ReporteVacunacionPage implements OnInit {
     console.log('months',months);
     console.log('years',days);
 
-    
+   
   }
   buscar(){
     if(this.reporteForm.valid){
@@ -99,6 +100,7 @@ export class ReporteVacunacionPage implements OnInit {
        var days  = m1.diff(m2,'days');
        
        vacuna.fechaNacimiento=years+' año(s) '+months+' mes(es) '+days+' dia(s)';
+       vacuna.fechaCita=moment.unix(vacuna.fechaCita as number).format('DD/MM/YYYY');
        return vacuna;
       })
       this.rows=data;

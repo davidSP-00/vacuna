@@ -71,12 +71,17 @@ editable:boolean=true;
       apoderado.habilitado=true;
       apoderado.baja=false;
       apoderado.roles=["user"];
-      this.apoderadoService.saveApoderado(apoderado).subscribe(res=>{
+      this.apoderadoService.apoderadoNuevo(apoderado).subscribe(res=>{
         console.log(res);
         this.editable=false;
         this.myStepper.next();
       },err=>{
-        alert('Error al guardar');
+        if(err.error.mensaje){
+
+          alert(err.error.mensaje);
+        }else{
+          alert("Error al guardar");
+        }
       });
 
   

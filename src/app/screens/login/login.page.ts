@@ -69,6 +69,14 @@ onSubmit(){
       );
 
 
+    },(err)=>{
+      if(err.error.mensaje){
+        
+        alert(err.error.mensaje);
+
+      }else{
+        alert("Error al logearse");
+      }
     })
       
    

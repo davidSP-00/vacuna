@@ -8,6 +8,7 @@ import { VacunacionDTO } from 'src/app/models/vacunacionDTO';
 import { UbicacionService } from 'src/app/services/ubicacion.service';
 import { EstadoVacunacionService } from 'src/app/services/estado-vacunacion.service';
 import { LocalService } from 'src/app/services/local.service';
+import { ComboService } from 'src/app/services/combo.service';
 
 @Component({
   selector: 'app-vacunacion-form',
@@ -18,10 +19,12 @@ export class VacunacionFormPage implements OnInit {
   vacunacionForm:FormGroup;
   vacunaDTO:VacunacionDTO=new VacunacionDTO();
   comboUbicacion:any[]=[];
+  comboNivelRiesgo:any[]=[];
   constructor(
     private route: ActivatedRoute,
     private localService:LocalService,
     private navCtrl:NavController,private estadoVacunacionService:EstadoVacunacionService,
+    private comboService:ComboService,
     private ubicacionService:UbicacionService) { }
 
   ngOnInit() {
@@ -35,6 +38,7 @@ export class VacunacionFormPage implements OnInit {
       idUbicacionCita:new  FormControl('',Validators.required),
       dniVacunador:new  FormControl('',Validators.required),
       reaccion:new FormControl('',Validators.required),
+      nivelRiesgo:new FormControl('',Validators.required),
       
     })
     this.route.queryParams.subscribe(params => {
@@ -58,6 +62,7 @@ onSubmit(){
   this.vacunaDTO.fechaCita=moment(this.vacunacionForm.get('fechaCita').value,'YYYY-MM-DD').unix().toString();
   this.vacunaDTO.reaccion=this.vacunacionForm.get('reaccion').value;
   this.vacunaDTO.lote=this.vacunacionForm.get('lote').value;
+  this.vacunaDTO.nivelRiesgo=this.vacunacionForm.get('nivelRiesgo').value;
   this.estadoVacunacionService.registrarVacunacion(this.vacunaDTO).subscribe(
     (data)=>{
       console.log(data);
@@ -72,5 +77,10 @@ obtenerCombo(){
   this.comboUbicacion=res;
 
   });
+  this.comboService.nivelesRiesgo().subscribe(res=>{
+    console.log(res);
+    this.comboNivelRiesgo=res;
+
+    });
 }
 }

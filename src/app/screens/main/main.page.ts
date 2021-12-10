@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/usuario';
+import { EmitterService } from 'src/app/services/emitter.service';
 import { LocalService } from 'src/app/services/local.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { LocalService } from 'src/app/services/local.service';
 export class MainPage implements OnInit {
   rol:string;
   public appPages = [];
-  constructor(private navCtrl:NavController,private localService:LocalService) { }
+  constructor(private navCtrl:NavController,private localService:LocalService,private emitter:EmitterService) { }
 
   ngOnInit() {
   
@@ -21,6 +22,7 @@ cerrarSesion(){
 }
 
 ionViewWillEnter(){
+  this.emitter.menu.emit("emitiendo");
   this.appPages= [
     { title: 'Inicio', url: '/main/menu', icon: 'home' ,tipo:'X'},
     { title: 'Lista de Padres y/o Apoderados', url: '/main/pacientes', icon: 'people', tipo:'ROLE_MEDICO' },

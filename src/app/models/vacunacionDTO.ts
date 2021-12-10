@@ -10,4 +10,5 @@ export class VacunacionDTO {
     idUbicacion:string;
     idVacuna:string;
     idUbicacionCita:string;
+    nivelRiesgo:string;
 }

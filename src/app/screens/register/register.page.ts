@@ -57,11 +57,16 @@ export class RegisterPage implements OnInit {
       apoderado.roles=["user"];
       apoderado.fechaNacimiento=moment(this.registerForm.get('fechaNacimiento').value,'YYYY-MM-DD').unix().toString();
       
-      this.apoderadoService.saveApoderado(apoderado).subscribe(res=>{
+      this.apoderadoService.apoderadoNuevo(apoderado).subscribe(res=>{
         alert('Registro exitoso');
       this.navCtrl.navigateForward('/login-padre');
       },err=>{
-        alert('Error al guardar');
+        if(err.error.mensaje){
+
+          alert(err.error.mensaje);
+        }else{
+          alert("Error al guardar");
+        }
       });
 
   

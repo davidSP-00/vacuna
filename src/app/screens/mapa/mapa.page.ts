@@ -8,7 +8,8 @@ import { UbicacionService } from 'src/app/services/ubicacion.service';
   styleUrls: ['./mapa.page.scss'],
 })
 export class MapaPage implements OnInit {
-  
+  opened=false;
+  map: any;
   lat=-12.047148801041523 ;
   lng=-77.04532980248231;
   ubicaciones:Ubicacion[];
@@ -22,5 +23,14 @@ export class MapaPage implements OnInit {
       this.ubicaciones=resp;
      } );
   }
+  mapReady(event: any) {
+    this.map = event;
+    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(document.getElementById('Settings'));
 
+}
+focus(ubicacion:Ubicacion){
+  console.log(ubicacion);
+  this.lat=Number(ubicacion.latitud ) ;
+  this.lng=Number(ubicacion.longitud );
+}
 }

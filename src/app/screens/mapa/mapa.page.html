@@ -2,16 +2,41 @@
 
 
 <ion-content>
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13" [clickableIcons]="false">
-    <ng-container *ngFor="let ubicacion of ubicaciones">
-      <agm-marker [latitude]="ubicacion.latitud" [longitude]="ubicacion.longitud" >
-        <agm-info-window [disableAutoPan]="true">
-          {{ubicacion.direccion}}
-        </agm-info-window>
-    
-      </agm-marker>
-    </ng-container>
-    
-  </agm-map>
+  
+  <mat-drawer-container>
+    <mat-drawer #drawer  [(opened)]="opened" mode="side">
+      
+      <ion-item class="ion-activatable ripple-parent" *ngFor="let ubicacion of ubicaciones" (click)="focus(ubicacion)">
+        <ion-thumbnail slot="start">
+          <img src="https://vmtsalud.com.pe/files/images/page/policlinico/polifachada.jpg" />
+        </ion-thumbnail>
+        <ion-label text-wrap style="margin-left: 10px;">
+          <h4>{{ubicacion.descripcion}}</h4>
+          <div class="f-10">{{ubicacion.direccion}}</div>
+        </ion-label>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-item>
+
+
+    </mat-drawer>
+    <mat-drawer-content>
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13" [clickableIcons]="false"
+      (mapReady)="mapReady($event)">
+        
+      <ion-button id="Settings" (click)="opened=!opened" style="width: 0px;"><mat-icon>ballot</mat-icon></ion-button>
+        <ng-container *ngFor="let ubicacion of ubicaciones">
+          <agm-marker [latitude]="ubicacion.latitud" [longitude]="ubicacion.longitud" >
+            <agm-info-window [disableAutoPan]="true">
+              <h6>{{ubicacion.descripcion}}</h6>
+              {{ubicacion.direccion}}
+            </agm-info-window>
+        
+          </agm-marker>
+        </ng-container>
+        
+      </agm-map>
+
+    </mat-drawer-content>
+  </mat-drawer-container>
 
 </ion-content>

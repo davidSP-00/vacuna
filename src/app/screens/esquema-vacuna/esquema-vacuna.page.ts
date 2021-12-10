@@ -112,7 +112,18 @@ validarCheck(grupoVacunaDTO :GrupoVacunaDTO){
 }
 obtenerMeses(){
   if(this.estadoVacunacion){
-  return Math.floor(moment().diff(moment(parseInt(this.estadoVacunacion.fechaNacimiento,10)*1000), 'months', true) )
+    
+    var m1 = moment();
+    var m2 = moment.unix(parseInt(this.estadoVacunacion.fechaNacimiento));
+
+    var years = m1.diff(m2,'year');
+    m2.add(years,'years');
+    
+    var months = m1.diff(m2,'months');
+    m2.add(months,'months');
+    var days  = m1.diff(m2,'days');
+    
+     return years+' año(s) '+months+' mes(es) '+days+' dia(s)';
   }
 }
 aplicarVacuna(vacunaDTO:VacunaDTO){
@@ -120,7 +131,7 @@ aplicarVacuna(vacunaDTO:VacunaDTO){
   if(this.rol!='padre'){
 
   if(vacunaDTO.aplicado){
-    console.log('no haver naca');
+    console.log('no hacer nada');
 
   }else{
     this.navCtrl.navigateForward('main/vacunacion-form',
