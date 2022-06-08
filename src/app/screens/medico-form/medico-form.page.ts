@@ -62,7 +62,7 @@ export class MedicoFormPage implements OnInit {
           estadoCivil:new FormControl('',Validators.required),
           nivelEducacion:new FormControl('',Validators.required),
           tipoTrabajo:new FormControl('',Validators.required),
-          nivelSocioEconomico:new FormControl('',Validators.required),
+          nivelSocioeconomico:new FormControl('',Validators.required),
           tipoPoblacion:new FormControl('',Validators.required),
          /*  numeroHijos:new FormControl('',Validators.required), */
           /* familiar:new FormControl('',Validators.required), */
